@@ -135,7 +135,7 @@
         const response = await fetch("https://gemini-chat-backend-0gm2.onrender.com/gemini", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({role, message})  // 发送带有角色描述的请求
+            body: JSON.stringify({role, message});  // 发送带有角色描述的请求
 
         const data = await response.json();
         const aiMessage = document.createElement("div");
