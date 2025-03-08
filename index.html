@@ -120,23 +120,22 @@
         chatBox.appendChild(userMessage);
         textarea.value = ""; // 清空输入框
 
-
-        let roleDescription;
-        if (role === "co-founders") {
-            roleDescription = "You play as 5 co-founders of the user's company. You are all the user's college classmates. You all just graduated. In the reply, you need to simulate five replies, each from one of the 5 co-founders who are very different in terms of personalities and risk preferences. You need to give affirmative answers to the user's message. Either you agree or disagree. There is no middle ground. And you need to give your reasons in each of the five replies.\n User's message: ";
-        } else if (role === "supplier") {
-            roleDescription = "You play as the user's key supplier. Your priority is ensuring a steady and profitable business relationship. You must assess the user's message from a supply chain and cost-efficiency perspective. You should consider factors such as pricing, contract stability, demand predictability, and long-term partnership value. Your reply should reflect whether the user's message aligns with your business interests. You should not be neutral.\n User's message: ";
-        } else if (role === "customer") {
-            roleDescription = "You play as a key customer of the user's company. Your perspective is that of a buyer who prioritizes product quality, price, customer service, and overall value. You need to analyze the user's message from a consumer standpoint. You must express whether the proposed idea meets your needs, and you must clearly state whether you are satisfied or dissatisfied, providing reasons for your stance.\n User's message: ";
-        } else if (role === "vc") {
-            roleDescription = "You play as a venture capitalist (VC) evaluating an investment opportunity presented by the user. Your focus is on scalability, market potential, competitive advantage, and financial viability. In your response, you need to decide whether you are interested in investing or not, providing clear reasoning for your choice. You should not be neutral. You must either express enthusiasm for investing or reject the idea, giving solid business rationale.\n User's message: ";
-        } 
+        // let roleDescription;
+        // if (role === "co-founders") {
+        //     roleDescription = "You play as 5 co-founders of the user's company. You are all the user's college classmates. You all just graduated. In the reply, you need to simulate five replies, each from one of the 5 co-founders who are very different in terms of personalities and risk preferences. You need to give affirmative answers to the user's message. Either you agree or disagree. There is no middle ground. And you need to give your reasons in each of the five replies.\n User's message: ";
+        // } else if (role === "supplier") {
+        //     roleDescription = "You play as the user's key supplier. Your priority is ensuring a steady and profitable business relationship. You must assess the user's message from a supply chain and cost-efficiency perspective. You should consider factors such as pricing, contract stability, demand predictability, and long-term partnership value. Your reply should reflect whether the user's message aligns with your business interests. You should not be neutral.\n User's message: ";
+        // } else if (role === "customer") {
+        //     roleDescription = "You play as a key customer of the user's company. Your perspective is that of a buyer who prioritizes product quality, price, customer service, and overall value. You need to analyze the user's message from a consumer standpoint. You must express whether the proposed idea meets your needs, and you must clearly state whether you are satisfied or dissatisfied, providing reasons for your stance.\n User's message: ";
+        // } else if (role === "vc") {
+        //     roleDescription = "You play as a venture capitalist (VC) evaluating an investment opportunity presented by the user. Your focus is on scalability, market potential, competitive advantage, and financial viability. In your response, you need to decide whether you are interested in investing or not, providing clear reasoning for your choice. You should not be neutral. You must either express enthusiasm for investing or reject the idea, giving solid business rationale.\n User's message: ";
+        // } 
 
         // 发送请求到后端
         const response = await fetch("https://gemini-chat-backend-0gm2.onrender.com/gemini", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({roleDescription, message})  // 发送带有角色描述的请求
+            body: JSON.stringify({role, message})  // 发送带有角色描述的请求
 
         const data = await response.json();
         const aiMessage = document.createElement("div");
