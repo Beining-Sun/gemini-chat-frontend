@@ -129,7 +129,7 @@
 
         const data = await response.json();
         const aiMessage = document.createElement("div");
-        aiMessage.innerHTML = `<strong>${role}:</strong> ${data.response.replace(/\n/g, '\n         ') || "Error: No response"}`;
+        aiMessage.innerHTML = `<strong>Reply:</strong> ${data.response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*/g, '•') .replace(/\n/g, '\n         ') || "Error: No response"}`;
         chatBox.appendChild(aiMessage);
 
         chatBox.scrollTop = chatBox.scrollHeight; // 滚动到底部
